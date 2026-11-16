@@ -1,0 +1,10 @@
+node_modules/
+dist/
+dist-playground/
+public/score-engine/
+coverage/
+*.log
+*.tsbuildinfo
+.eslintcache
+.DS_Store
+Thumbs.db

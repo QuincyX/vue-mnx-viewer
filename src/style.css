@@ -1,0 +1,9 @@
+/* The viewer component sizes its own host; the host page owns fonts and colour. */
+.mnx-viewer {
+  width: 100%;
+  min-height: 240px;
+}
+
+.mnx-viewer canvas {
+  display: block;
+}
