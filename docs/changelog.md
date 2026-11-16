@@ -21,3 +21,10 @@
 - 提供 `MnxViewer` 组件、`scoreEngineAssets()` Vite 插件与 5 个 W3C MNX 示例数据。
 - 试验场验证：Edge 无头浏览器渲染 2 份 SVG/Canvas 图层，字体与 WASM 均从 `/score-engine/` 成功加载。
 - 明确不重写排版/绘谱；MusicXML 转换与编辑交互留在 pu-studio。
+
+## 2026-11-16 · 试验场部署到 pu.q-dev.cn/mnx/
+
+- 生产构建 base 改为 `/mnx/`（`command === 'build'` 时启用，本地 dev 仍为 `/`）。
+- 示例数据改为从 `import.meta.env.BASE_URL + 'samples/'` 加载，引擎资源传
+  `${BASE_URL}score-engine/`，避免部署在子路径时从域名根取 WASM/字体。
+- 线上验证：`https://pu.q-dev.cn/mnx/` 200，WASM/字体加载成功，Canvas 正常渲染，无控制台错误。

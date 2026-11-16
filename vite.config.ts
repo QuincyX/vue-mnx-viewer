@@ -5,7 +5,9 @@ import { defineConfig } from 'vite'
 
 import { scoreEngineAssets } from './src/vite-plugin.ts'
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  // The deployed playground lives at /mnx/ under pu.q-dev.cn; dev stays at /.
+  base: command === 'build' ? '/mnx/' : '/',
   plugins: [vue(), scoreEngineAssets()],
   resolve: {
     alias: {
@@ -21,4 +23,4 @@ export default defineConfig({
     port: 4180,
     strictPort: true,
   },
-})
+}))

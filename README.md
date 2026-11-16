@@ -120,8 +120,12 @@ pnpm install
 pnpm dev          # 试验场 http://localhost:5180
 pnpm test         # mnx 解析与示例数据单测
 pnpm type-check   # vue-tsc
+pnpm build        # 试验场生产构建 dist-playground/（base /mnx/）
 pnpm build:lib    # 构建 dist/（JS + 类型 + CSS）
 ```
+
+试验场线上地址：<https://pu.q-dev.cn/mnx/>。构建 base 为 `/mnx/`，示例数据与引擎资源都从
+`import.meta.env.BASE_URL` 解析；单独部署到其他路径时同步修改 `vite.config.ts` 的 base。
 
 ## 发布
 

@@ -40,6 +40,10 @@ const zoom = ref<number | 'fit-width' | 'fit-page'>('fit-width')
 const pageCount = ref(0)
 const engineVersion = ref('')
 const viewerRef = ref<MnxViewerExposed | null>(null)
+// Built playground is served from /mnx/, so both demo samples and engine assets
+// resolve relative to the Vite base instead of the domain root.
+const baseUrl = import.meta.env.BASE_URL
+const engineBaseUrl = `${baseUrl}score-engine/`
 
 const summary = computed(() => summarizeMnx(mnx.value))
 const pageBackground = computed(() => (dark.value ? '#1b1b1f' : '#ffffff'))
@@ -49,7 +53,7 @@ async function load(sample: Sample): Promise<void> {
   loading.value = true
   error.value = ''
   try {
-    const response = await fetch(`/samples/${sample.id}.json`)
+    const response = await fetch(`${baseUrl}samples/${sample.id}.json`)
     if (!response.ok) throw new Error(`HTTP ${response.status}`)
     mnx.value = await response.json()
   } catch (cause) {
@@ -173,6 +177,7 @@ onMounted(() => void load(current.value))
           :zoom="zoom"
           :page-background="pageBackground"
           :ink="ink"
+          :asset-base-url="engineBaseUrl"
           label="MNX 样例曲谱"
           @ready="({ engine }) => (engineVersion = `${engine.version.package} / ${engine.version.engine}`)"
           @layout="({ pageCount: pages }) => (pageCount = pages)"

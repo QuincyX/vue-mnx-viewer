@@ -68,7 +68,8 @@
     "preview": "vite preview",
     "type-check": "vue-tsc --noEmit",
     "test": "vitest run",
-    "prepublishOnly": "pnpm build:lib"
+    "prepublishOnly": "pnpm build:lib",
+    "prepare": "pnpm build:lib"
   },
   "dependencies": {
     "@viritura/score-engine": "0.2.0",
