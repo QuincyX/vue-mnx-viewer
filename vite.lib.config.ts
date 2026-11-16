@@ -10,6 +10,9 @@ import { defineConfig } from 'vite'
 // `vue` and the Viritura packages stay external so consumers dedupe them.
 export default defineConfig({
   plugins: [vue()],
+  // The playground's public/score-engine runtime assets must never end up in
+  // the npm tarball; consumers generate them with scoreEngineAssets().
+  publicDir: false,
   build: {
     lib: {
       entry: {
