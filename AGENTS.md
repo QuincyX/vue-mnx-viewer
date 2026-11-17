@@ -1,6 +1,6 @@
 # Agent 工程指南（@quincyx/vue-mnx-viewer）
 
-本文件适用于在 `mnx-viewer` 目录内工作的 Agent。
+本文件适用于在 `vue-mnx-viewer` 目录内工作的 Agent。
 
 ## 1. 定位
 

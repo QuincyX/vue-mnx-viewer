@@ -2,6 +2,23 @@
 
 只追加，不重写历史。
 
+## 2026-11-17 · 工作区目录改为 `vue-mnx-viewer`
+
+- 目录由 `mnx-viewer/` 改为 `vue-mnx-viewer/`，npm 包名 `@quincyx/vue-mnx-viewer` 不变；同步
+  `pnpm-workspace.yaml`、`pnpm-lock.yaml`（importer 与 `workspace:*` 链接）以及各项目文档中的目录链接。
+- 生产部署路径仍为 `/mnx/`，试验场 `base` 与现有资源 URL 不变。
+- 验证：`pnpm install --offline`、`pnpm test`、`pnpm type-check`、`pnpm build:lib` 通过；三个前端生产构建通过。
+
+## 2026-11-16 · 试验场接入 PU 品牌图标
+
+- 试验场 `index.html` 增加带 `%BASE_URL%` 前缀的 `favicon.svg` / `favicon.ico` / `apple-touch-icon.png`
+  与 `og:*`、`twitter:*`；生产构建下解析为 `/mnx/…`。
+- 新增 `public/brand/`（`pu-mark*.svg`、`pu-logo-*`、`pu-app-icon.svg`）、`public/og-image.png` 与
+  多尺寸 `favicon.ico`；源文件在仓库根 `brand/`。
+- 组件 API、构建产物与 npm 发布内容不变（`files` 仍只含 `dist`、README、LICENSE、changelog）。
+- 验证：`pnpm test`（8 项）、`pnpm type-check`、`pnpm build`（试验场与库）通过；
+  `dist-playground/index.html` 的图标引用为 `/mnx/favicon.svg`。
+
 ## 2026-11-16 · 改名 `@quincyx/vue-mnx-viewer` 并准备 npm 发布
 
 - 包名由 `@pu/mnx-viewer` 改为 `@quincyx/vue-mnx-viewer`；工作区内三个前端与全部文档同步。
